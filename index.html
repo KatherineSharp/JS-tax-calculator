@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+</head>
+<body>
+        <div>
+            <label>Title</label>
+            <input>
+        </div>
+        <div>
+            <label>Name</label>
+            <input>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input>
+        </div>
+        <div>
+            <label>Position</label>
+            <input>
+        </div>
+        <div>
+            <label>Branch</label>
+            <input>
+        </div>
+        <div>
+            <label>Email</label>
+            <input>
+        </div>
+        <div>
+            <label>Contact Number</label>
+            <input>
+        </div>
+        <div>
+            <label>Payroll ID</label>
+            <input>
+        </div>
+        <div>
+            <label>Salary</label>
+            <input id="salary" type="number" />
+        </br>
+            <button id="calculate">Calculate Tax</button>
+        </br>
+            <label>Total Income </label>$<span id="total"></span>
+        </br>
+            <label>Tax </label>$<span id="tax"></span>
+        </div>
+        <div>
+         <button>Submit</button> 
+    </div>
+</body>
+</html>
+
+<script>
+
+function calculateTax(salary){
+ var tax = 0;
+    if(salary >=180000){
+    tax = (salary - 180000) * .45 + 54097;
+    }
+    else if( salary >= 90000){
+    tax = (salary - 90000) * .37 + 20797;    
+    }
+    else if(salary >= 37000){
+    tax = (salary - 37000) * .325 + 3572;
+    }
+    else if(salary >= 18200){
+    tax = (salary - 18200) * .19;
+    }
+    return tax;
+    }
+
+var calculate = document.getElementById('calculate');
+
+calculate.onclick = function() {
+
+    var salary = document.getElementById("salary");
+    var tax = document.getElementById("tax");
+    var total = document.getElementById("total");
+    
+    var calculatedTax = calculateTax(salary.value);
+
+    tax.innerHTML = calculatedTax;  
+    total.innerHTML = salary.value - calculatedTax;
+}
+</script>
+
